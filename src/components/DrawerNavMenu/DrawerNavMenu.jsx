@@ -9,11 +9,20 @@ import {
 } from "@mui/material";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
+import styled from "styled-components";
+
+const DrawerMenuHeader = styled.div`
+	padding-left: 1rem;
+	display: flex;
+	align-items: center;
+	column-gap: 1rem;
+	min-height: 56px;
+`;
 
 const DrawerNavMenu = () => {
 	return (
 		<nav>
-			<Toolbar />
+			<DrawerMenuHeader />
 			<Divider />
 			<List>
 				{["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (

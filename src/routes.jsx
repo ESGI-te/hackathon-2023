@@ -1,6 +1,6 @@
 import Formation from "./pages/Formation";
 import Formations from "./pages/Formations";
-import Lesson from "./pages/Lesson";
+import LessonWizard from "./pages/LessonWizard";
 import Home from "./pages/Home";
 
 const routes = [
@@ -17,8 +17,8 @@ const routes = [
 		element: <Formation />,
 	},
 	{
-		path: "/formations/:id/lessons/:id",
-		element: <Lesson />,
+		path: "/formations/:formationId/lessons/:lessonId",
+		element: <LessonWizard />,
 	},
 ];
 
