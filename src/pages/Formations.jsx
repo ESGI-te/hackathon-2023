@@ -1,5 +1,11 @@
+import TrainingList from "@/components/TrainingList";
+
 const Formations = () => {
-	return <div>Formations</div>;
+	return (
+		<div>
+			<TrainingList/>
+		</div>
+	);
 };
 
 export default Formations;
