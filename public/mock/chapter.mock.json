@@ -1,0 +1,38 @@
+{
+	"id": 100,
+	"title": "Chapitre 1",
+	"lessons": [
+		{
+			"id": 1000,
+			"title": "Comment jouer au basket-ball en 10 leçons 1",
+			"duration": 300000,
+			"video_url": "https://youtu.be/4LvaX748pVI",
+			"content": "<p>Cette leçon est dédiée aux règles de base du basket-ball. Nous allons vous apprendre comment dribbler, passer et tirer comme un pro !</p>",
+			"intro": "<p>Bienvenue à la leçon n°1 de notre série \"Comment jouer au basket-ball en 10 leçons\". Dans cette série, nous allons vous apprendre les compétences et les stratégies nécessaires pour devenir un joueur de basket-ball compétent. Commencez par apprendre les règles de base du jeu.</p>"
+		},
+		{
+			"id": 1001,
+			"title": "Comment jouer au basket-ball en 10 leçons 2",
+			"duration": 300000,
+			"video_url": "https://youtu.be/4LvaX748pVI",
+			"content": "<p>Cette leçon est dédiée aux règles de base du basket-ball. Nous allons vous apprendre comment dribbler, passer et tirer comme un pro !</p>",
+			"intro": "<p>Bienvenue à la leçon n°2 de notre série \"Comment jouer au basket-ball en 10 leçons\". Dans cette série, nous allons vous apprendre les compétences et les stratégies nécessaires pour devenir un joueur de basket-ball compétent. Commencez par apprendre les règles de base du jeu.</p>"
+		},
+		{
+			"id": 1002,
+			"title": "Comment jouer au basket-ball en 10 leçons 3",
+			"duration": 300000,
+			"video_url": "https://youtu.be/4LvaX748pVI",
+			"content": "<p>Cette leçon est dédiée aux règles de base du basket-ball. Nous allons vous apprendre comment dribbler, passer et tirer comme un pro !</p>",
+			"intro": "<p>Bienvenue à la leçon n°3 de notre série \"Comment jouer au basket-ball en 10 leçons\". Dans cette série, nous allons vous apprendre les compétences et les stratégies nécessaires pour devenir un joueur de basket-ball compétent. Commencez par apprendre les règles de base du jeu.</p>"
+		},
+		{
+			"id": 1003,
+			"title": "Comment jouer au basket-ball en 10 leçons 4",
+			"duration": 300000,
+			"video_url": "https://youtu.be/4LvaX748pVI",
+			"content": "<p>Cette leçon est dédiée aux règles de base du basket-ball. Nous allons vous apprendre comment dribbler, passer et tirer comme un pro !</p>",
+			"intro": "<p>Bienvenue à la leçon n°4 de notre série \"Comment jouer au basket-ball en 10 leçons\". Dans cette série, nous allons vous apprendre les compétences et les stratégies nécessaires pour devenir un joueur de basket-ball compétent. Commencez par apprendre les règles de base du jeu.</p>"
+		}
+	]
+}

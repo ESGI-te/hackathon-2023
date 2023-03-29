@@ -1,0 +1,165 @@
+{
+	"id": 1,
+	"title": "Ma super formation",
+	"description": "Nisi id et excepteur consectetur ut ex anim et voluptate exercitation laborum occaecat. Exercitation consequat et veniam id duis aliqua.",
+	"author": "Teo Lugat",
+	"duration": 10000000,
+	"chapters": [
+		{
+			"id": 100,
+			"title": "Chapitre 1",
+			"lessons": [
+				{
+					"id": 1000,
+					"title": "Comment jouer au basket-ball en 10 leçons 1",
+					"duration": 300000
+				},
+				{
+					"id": 1001,
+					"title": "Comment jouer au basket-ball en 10 leçons 2",
+					"duration": 300000
+				},
+				{
+					"id": 1002,
+					"title": "Comment jouer au basket-ball en 10 leçons 3",
+					"duration": 300000
+				},
+				{
+					"id": 1003,
+					"title": "Comment jouer au basket-ball en 10 leçons 4",
+					"duration": 300000
+				}
+			]
+		},
+		{
+			"id": 101,
+			"title": "Chapitre 2",
+			"lessons": [
+				{
+					"id": 1004,
+					"title": "Comment jouer au basket-ball en 10 leçons 1",
+					"duration": 300000
+				},
+				{
+					"id": 1005,
+					"title": "Comment jouer au basket-ball en 10 leçons 2",
+					"duration": 300000
+				},
+				{
+					"id": 1006,
+					"title": "Comment jouer au basket-ball en 10 leçons 3",
+					"duration": 300000
+				},
+				{
+					"id": 1007,
+					"title": "Comment jouer au basket-ball en 10 leçons 4",
+					"duration": 300000
+				}
+			]
+		},
+		{
+			"id": 102,
+			"title": "Chapitre 3",
+			"lessons": [
+				{
+					"id": 1008,
+					"title": "Comment jouer au basket-ball en 10 leçons 1",
+					"duration": 300000
+				},
+				{
+					"id": 1009,
+					"title": "Comment jouer au basket-ball en 10 leçons 2",
+					"duration": 300000
+				},
+				{
+					"id": 1010,
+					"title": "Comment jouer au basket-ball en 10 leçons 3",
+					"duration": 300000
+				},
+				{
+					"id": 1011,
+					"title": "Comment jouer au basket-ball en 10 leçons 4",
+					"duration": 300000
+				}
+			]
+		},
+		{
+			"id": 103,
+			"title": "Chapitre 4",
+			"lessons": [
+				{
+					"id": 1012,
+					"title": "Comment jouer au basket-ball en 10 leçons 1",
+					"duration": 300000
+				},
+				{
+					"id": 1013,
+					"title": "Comment jouer au basket-ball en 10 leçons 2",
+					"duration": 300000
+				},
+				{
+					"id": 1014,
+					"title": "Comment jouer au basket-ball en 10 leçons 3",
+					"duration": 300000
+				},
+				{
+					"id": 1015,
+					"title": "Comment jouer au basket-ball en 10 leçons 4",
+					"duration": 300000
+				}
+			]
+		},
+		{
+			"id": 104,
+			"title": "Chapitre 5",
+			"lessons": [
+				{
+					"id": 1016,
+					"title": "Comment jouer au basket-ball en 10 leçons 1",
+					"duration": 300000
+				},
+				{
+					"id": 1017,
+					"title": "Comment jouer au basket-ball en 10 leçons 2",
+					"duration": 300000
+				},
+				{
+					"id": 1018,
+					"title": "Comment jouer au basket-ball en 10 leçons 3",
+					"duration": 300000
+				},
+				{
+					"id": 1019,
+					"title": "Comment jouer au basket-ball en 10 leçons 4",
+					"duration": 300000
+				}
+			]
+		},
+		{
+			"id": 105,
+			"title": "Chapitre 6",
+			"lessons": [
+				{
+					"id": 1020,
+					"title": "Comment jouer au basket-ball en 10 leçons 1",
+					"duration": 300000
+				},
+				{
+					"id": 1021,
+					"title": "Comment jouer au basket-ball en 10 leçons 2",
+					"duration": 300000
+				},
+				{
+					"id": 1022,
+					"title": "Comment jouer au basket-ball en 10 leçons 3",
+					"duration": 300000
+				},
+				{
+					"id": 1023,
+					"title": "Comment jouer au basket-ball en 10 leçons 4",
+					"duration": 300000
+				}
+			]
+		}
+	]
+}

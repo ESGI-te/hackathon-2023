@@ -9,7 +9,7 @@ const Menu = ({ handleToggleDrawer, drawerIsOpen }) => {
 	return (
 		<Box
 			component="aside"
-			sx={{ width: { sm: DRAWER_WIDTH }, flexShrink: { sm: 0 } }}
+			sx={{ width: { md: DRAWER_WIDTH }, flexShrink: { md: 0 } }}
 			aria-label="mailbox folders"
 		>
 			<Drawer
@@ -21,7 +21,7 @@ const Menu = ({ handleToggleDrawer, drawerIsOpen }) => {
 					keepMounted: true, // Better open performance on mobile.
 				}}
 				sx={{
-					display: { xs: "block", sm: "none" },
+					display: { xs: "block", md: "none" },
 					"& .MuiDrawer-paper": {
 						boxSizing: "border-box",
 						width: DRAWER_WIDTH,
@@ -33,7 +33,7 @@ const Menu = ({ handleToggleDrawer, drawerIsOpen }) => {
 			<Drawer
 				variant="permanent"
 				sx={{
-					display: { xs: "none", sm: "block" },
+					display: { xs: "none", md: "block" },
 					"& .MuiDrawer-paper": {
 						boxSizing: "border-box",
 						width: DRAWER_WIDTH,

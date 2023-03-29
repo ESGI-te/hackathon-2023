@@ -1,5 +1,5 @@
+import { Button } from "@mui/material";
 import { useState } from "react";
-import quizz from "./quizz.mock.json";
 import styled from "styled-components";
 
 const Form = styled.form`
@@ -36,6 +36,15 @@ const QuestionTitle = styled.h3`
 	border-bottom: solid 1px lightgray;
 `;
 
+const SubmitButton = styled(Button)`
+	width: 100%;
+
+	${(p) => p.theme.mediaQueries.desktopAndUp} {
+		width: fit-content;
+		align-self: center;
+	}
+`;
+
 const Question = ({ question, handleChangeAnswer }) => {
 	const [selectedValue, setSelectedValue] = useState();
 
@@ -68,7 +77,7 @@ const Question = ({ question, handleChangeAnswer }) => {
 	);
 };
 
-const Quizz = () => {
+const Quizz = ({ quizz }) => {
 	const defaultAnswers = quizz.questions.reduce((acc, question) => {
 		acc[question.id] = {
 			value: "",
@@ -113,7 +122,9 @@ const Quizz = () => {
 					handleChangeAnswer={handleChangeAnswer}
 				/>
 			))}
-			<button type="submit">Valider</button>
+			<SubmitButton variant="contained" type="submit">
+				Valider
+			</SubmitButton>
 		</Form>
 	);
 };
