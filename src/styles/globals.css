@@ -27,21 +27,21 @@
     --ocean-600: #3B7A87;
     --ocean-700: #336A75;
     /* Yello sub */
-    --yellow--100: #FFF3DB;
-    --yellow--200: #FFEFC7;
-    --yellow--300: #FFE7AA;
-    --yellow--400: #FFD466;
-    --yellow--500: #FFBE1A;
-    --yellow--600: #EBA800;
-    --yellow--700: #CC9200;
+    --yellow-100: #FFF3DB;
+    --yellow-200: #FFEFC7;
+    --yellow-300: #FFE7AA;
+    --yellow-400: #FFD466;
+    --yellow-500: #FFBE1A;
+    --yellow-600: #EBA800;
+    --yellow-700: #CC9200;
     /* Red Light */
-    --red--100: #F9ECEC;
-    --red--200: #F9C8CA;
-    --red--300: #EEA0A2;
-    --red--400: #EE878A;
-    --red--500: #E67377;
-    --red--600: #D45458;
-    --red--700: #AB494C;
+    --red-100: #F9ECEC;
+    --red-200: #F9C8CA;
+    --red-300: #EEA0A2;
+    --red-400: #EE878A;
+    --red-500: #E67377;
+    --red-600: #D45458;
+    --red-700: #AB494C;
 }
 
 * {
