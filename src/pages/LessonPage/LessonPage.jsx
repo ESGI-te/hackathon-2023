@@ -43,7 +43,7 @@ const NavigatorContainer = styled.div`
 	align-items: center;
 	justify-content: center;
 	position: fixed;
-	top: 56px;
+	top: 0;
 	left: 0;
 	z-index: 1;
 
@@ -80,15 +80,27 @@ const NavigatorThreadWrapper = styled.div`
 
 const NavigatorThread = ({ data }) => (
 	<NavigatorThreadWrapper>
-		<Typography as={Link} variant="caption">
+		<Typography
+			as={Link}
+			to={`/formations/${data?.formation.id}`}
+			variant="caption"
+		>
 			{data?.formation.title}
 		</Typography>
 		<ArrowRightIcon />
-		<Typography as={Link} variant="caption">
+		<Typography
+			as={Link}
+			to={`/formations/${data?.formation.id}`}
+			variant="caption"
+		>
 			{data?.chapter.title}
 		</Typography>
 		<ArrowRightIcon />
-		<Typography as={Link} variant="caption">
+		<Typography
+			as={Link}
+			to={`/formations/${data?.formation.id}`}
+			variant="caption"
+		>
 			{data?.current.title}
 		</Typography>
 	</NavigatorThreadWrapper>

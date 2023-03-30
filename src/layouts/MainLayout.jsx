@@ -8,7 +8,6 @@ const Main = styled.main`
 	flex-grow: 1;
 	background-color: var(--neutral200);
 	min-height: 100vh;
-	padding-top: 56px;
 
 	${(p) => p.theme.mediaQueries.desktopAndUp} {
 		width: calc(100% - ${DRAWER_WIDTH}) px;
@@ -28,7 +27,6 @@ export default function MainLayout() {
 
 	return (
 		<>
-			<Header handleToggleDrawer={handleToggleDrawer} />
 			<Drawer
 				drawerIsOpen={drawerIsOpen}
 				handleToggleDrawer={handleToggleDrawer}
