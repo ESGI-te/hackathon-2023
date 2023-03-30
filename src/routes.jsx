@@ -2,11 +2,20 @@ import FormationPage from "@pages/FormationPage";
 import FormationsPage from "@pages/FormationsPage";
 import LessonPage from "@pages/LessonPage";
 import HomePage from "@pages/HomePage";
+import Login from "./pages/Login";
 
 const routes = [
 	{
 		path: "",
 		element: <HomePage />,
+	},
+	{
+		path: "/login",
+		element: <Login />,
+	},
+	{
+		path: "/register",
+		element: <Register />,
 	},
 	{
 		path: "/formations",
