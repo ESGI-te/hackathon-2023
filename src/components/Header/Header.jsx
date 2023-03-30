@@ -19,6 +19,11 @@ const Header = ({ handleToggleDrawer }) => {
 				width: { md: `calc(100% - ${DRAWER_WIDTH}px)` },
 				ml: { mathDepth: `${DRAWER_WIDTH}px` },
 			}}
+			style={
+				{
+					backgroundColor: "#fff",
+				}
+			}
 		>
 			<InnerWrapper>
 				<IconButton
