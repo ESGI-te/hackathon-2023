@@ -1,43 +1,77 @@
 [  
 {    
     "id": 1,
-    "title": "Formation 1",    
-    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg"  
+    "title": "Ma super formation",
+    "description": "Nisi id et excepteur consectetur ut ex anim et voluptate exercitation laborum occaecat. Exercitation consequat et veniam id duis aliqua.",
+    "author": "Teo Lugat",
+    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg",
+    "duration": 10000000
 }, 
 {   
-    "id": 2,    
-    "title": "Formation 2",    
-    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg"
+    "id": 2,
+    "title": "Ma super formation",
+    "description": "Nisi id et excepteur consectetur ut ex anim et voluptate exercitation laborum occaecat. Exercitation consequat et veniam id duis aliqua.",
+    "author": "Teo Lugat",
+    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg",
+    "duration": 10000000
+    
 },
 {    
-    "id": 3,    
-    "title": "Formation 3",    
-    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg"  
+    "id": 3,
+    "title": "Ma super formation",
+    "description": "Nisi id et excepteur consectetur ut ex anim et voluptate exercitation laborum occaecat. Exercitation consequat et veniam id duis aliqua.",
+    "author": "Teo Lugat",
+    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg",
+    "duration": 10000000
 },
 {    
-    "id": 4,    
-    "title": "Formation 4",    
-    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg"  
+    "id": 4,
+    "title": "Ma super formation",
+    "description": "Nisi id et excepteur consectetur ut ex anim et voluptate exercitation laborum occaecat. Exercitation consequat et veniam id duis aliqua.",
+    "author": "Teo Lugat",
+    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg",
+    "duration": 10000000  
 },   
 {    
-    "id": 5,    
-    "title": "Formation 5",    
-    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg"  
+    "id": 5,
+    "title": "Ma super formation",
+    "description": "Nisi id et excepteur consectetur ut ex anim et voluptate exercitation laborum occaecat. Exercitation consequat et veniam id duis aliqua.",
+    "author": "Teo Lugat",
+    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg",
+    "duration": 10000000
 },
 {    
-    "id": 6,    
-    "title": "Formation 6",    
-    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg"  
+    "id": 6,
+    "title": "Ma super formation",
+    "description": "Nisi id et excepteur consectetur ut ex anim et voluptate exercitation laborum occaecat. Exercitation consequat et veniam id duis aliqua.",
+    "author": "Teo Lugat",
+    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg",
+    "duration": 10000000
 },
 {    
-    "id": 7,    
-    "title": "Formation 7",    
-    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg"  
+    "id": 7,
+    "title": "Ma super formation",
+    "description": "Nisi id et excepteur consectetur ut ex anim et voluptate exercitation laborum occaecat. Exercitation consequat et veniam id duis aliqua.",
+    "author": "Teo Lugat",
+    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg",
+    "duration": 10000000
 },
 {    
-    "id": 8,    
-    "title": "Formation 8",    
-    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg"  
+    "id": 8,
+    "title": "Ma super formation",
+    "description": "Nisi id et excepteur consectetur ut ex anim et voluptate exercitation laborum occaecat. Exercitation consequat et veniam id duis aliqua.",
+    "author": "Teo Lugat",
+    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg",
+    "duration": 10000000
+}
+,
+{    
+    "id": 9,
+    "title": "Ma super formation",
+    "description": "Nisi id et excepteur consectetur ut ex anim et voluptate exercitation laborum occaecat. Exercitation consequat et veniam id duis aliqua.",
+    "author": "Teo Lugat",
+    "image": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg",
+    "duration": 10000000
 }
 
 ]

@@ -1,3 +1,4 @@
+import { CardContent } from "@mui/material";
 import { useState } from "react";
 import styled from "styled-components";
 import formationsData from './formationsData.json';
@@ -12,7 +13,6 @@ const Title = styled.h2`
 position: relative;
 padding: 10px;
 padding-left: 25px;
-color: #red;
 margin: 0;
 display: block;
 align-items: middle;
@@ -58,83 +58,91 @@ display:flex;
 margin-top: 1rem;
 flex-flow:row wrap;`;
 
-const Card = styled.figure`
-position: relative;
-margin: 20px;
-width: 88%;
-height: 410px;;
-overflow: hidden;
-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
-transform-origin: center top;
-transform-style: preserve-3d;
-transform: translateZ(0);
-transition: 0.3s;
+const Card = styled.a`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  margin: 20px;
+  width: 19rem;
+  height: 100%;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+  transform-origin: center top;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+  transition: 0.3s;
 
-&:after {
-content: '';
-position: absolute;
-z-index: 10;
-width: 200%;
-height: 100%;
-top: -90%;
-left: -20px;
-opacity: 0.1;
-transform: rotate(45deg);
-background: linear-gradient(to top, transparent, #fff 15%, rgba(255, 255, 255, 0.5));
-transition: 0.3s;
-}
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: 10;
+    width: 200%;
+    height: 100%;
+    top: -90%;
+    left: -20px;
+    opacity: 0.1;
+    transform: rotate(45deg);
+    background: linear-gradient(to top, transparent, #fff 15%, rgba(255, 255, 255, 0.5));
+    transition: 0.3s;
+  }
 
-&:hover figcaption {
-    bottom: 0px;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 8px 16px 3px rgba(0, 0, 0, 0.6);
+    transform: translateY(-1px) scale(1.001) rotateX(0deg);
+    &:after {
+      transform: rotate(25deg);
+      opacity: 0.15;
+    }
   }
   
-&:hover,
-&:focus,
-&:active {
-box-shadow: 0 8px 16px 3px rgba(0, 0, 0, 0.6);
-transform: translateY(-3px) scale(1.05) rotateX(15deg);
-&:after {
-    transform: rotate(25deg);
-    top: -40%;
-    opacity: 0.15;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+    &:hover {
+      transform: none;
+      &:after {
+        transform: none;
+      }
+    }
   }
-}
-@media screen and (min-width: 425px) {
-    width: 90%;
-    height: 482px;
+  @media screen and (min-width: 425px) {
+    width: 22rem;
   }
-@media screen and (min-width: 768px) {
-    width: 41.6%;
-    height: 290px;
+  @media screen and (min-width: 768px) {
+    width: 28rem;
   }
   @media screen and (min-width: 1024px) {
-    width: 27.8%;
-    height: 294px;
+    width: 20.5rem;
   }
-  @media screen and (min-width: 1440px) {
-    width: 21.5%;
-    height: 355px;
+  @media screen and (min-width: 1440px){
+    width: 21.5rem;
   }
-
 `;
 
 
 const CardImg = styled.img`
-    width: 100%; 
-    min-height: 100%;
+  width: 100%; 
+  height: 50%;
+  object-fit: cover;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 250px;
+  }
 `;
 
-const CardCaption = styled.figcaption`
-  position: absolute;
-  bottom: -40px;
-  left: 0;
-  right: 0;
-  padding: 20px;
-  padding-bottom: 10px;
-  font-size: 20px;
+
+const CardCaption = styled.div`
+  display: flex;
+  font-size: 14px;
+  letter-spacing: 0px;
   background-color: transparent;
-  color: #fff;
-  transition: 0.3s;
+  color: black;
+  transition: 0.3s;  
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 
   h3 {
     color: #3792e3;
@@ -144,11 +152,7 @@ const CardCaption = styled.figcaption`
     visibility: hidden;
     transition: visibility 0.3s;
   }
-  
-  ${Card}:hover & h3 {
-    visibility: visible;
-  }
-}`;
+`;
 
 const NewsWrapper = styled.div`
 display:flex;
@@ -162,12 +166,12 @@ flex-flow: row wrap;
 const Article = styled.figure`
 position: relative;
 overflow: hidden;
-width: 18rem;
+width: 19rem;
 height: 12rem;
 margin: 20px;;
 @media screen and (min-width: 425px) {
-    width: 21rem;
-    height: 15rem;
+  width: 22rem;
+  height: 15rem;
   }
 @media screen and (min-width: 768px) {
     width: 28rem;
@@ -192,7 +196,7 @@ transition: 0.2s;
     transform: scale(0.97);
 }`;
 
-const ArticleCaption = styled.figcaption`
+const ArticleCaption = styled.div`
 position: absolute;
 left: 0;
 right: 0;
@@ -239,15 +243,25 @@ const InputWrapper = styled.div`
     padding: 1rem;
     height: 2.5rem;
     font-size: 1rem;
-    width: 13em;
+    width: 15.438rem;;
     margin-right: 20px;
     color: grey;
     box-shadow: 0 0.3rem #dfd9d9;
     cursor: pointer;
-
+    
     &:focus {
       outline-color: #1976d2;
     }
+  }
+  @media screen and (min-width: 1024px) {
+    input {
+      width: 20.438rem;
+    }  
+  }
+  @media screen and (min-width: 1440px) {
+    input {
+      width: 21.438rem;
+    }  
   }
 `;
 const SearchWrapper = styled.div`
@@ -259,6 +273,23 @@ border-radius: 1rem;
 @media screen and (min-width: 768px) {
   flex-direction: row-reverse;
 }
+`;
+const CardContentWrapper = styled.div`
+padding: 10px;
+`;
+
+const TopContent = styled.div`
+display:flex;
+justify-content: space-between;`;
+
+const TitleWrapper = styled.div`
+display:flex;
+flex-direction: column;
+`;
+const AuthorContent = styled.p`
+color:grey;
+font-size:0.7rem;
+margin-bottom:10px;
 `;
 
 const SearchBar = ({ value, onChange }) => {
@@ -272,6 +303,17 @@ const SearchBar = ({ value, onChange }) => {
     );
   };
 
+  const formatDuration = (duration) => {
+    if (duration < 60 * 60 * 1000) {
+      const minutes = Math.floor(duration / (60 * 1000));
+      return `${minutes} minutes`;
+    } else {
+      const hours = Math.floor(duration / (60 * 60 * 1000));
+      const remainingMinutes = Math.floor((duration % (60 * 60 * 1000)) / (60 * 1000));
+      return `${hours} h ${remainingMinutes} min`;
+    }
+  };
+  
   const List = () => {
     const [searchTerm, setSearchTerm] = useState("");
   
@@ -279,8 +321,10 @@ const SearchBar = ({ value, onChange }) => {
       setSearchTerm(event.target.value);
     };
   
-    const filteredFormations = formationsData.filter((formation) =>
-      formation.title.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredFormations = formationsData.filter(
+      (formation) =>
+        formation.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+        formation.duration
     );
   
     return (
@@ -290,16 +334,26 @@ const SearchBar = ({ value, onChange }) => {
           <span>({filteredFormations.length})</span>
         </Title>
         <SearchWrapper>
-        <InputWrapper>
-        <SearchBar value={searchTerm} onChange={handleSearch} />
-        </InputWrapper>
+          <InputWrapper>
+            <SearchBar value={searchTerm} onChange={handleSearch} />
+          </InputWrapper>
         </SearchWrapper>
-
-        <CardWrapper className="cards">
+        <CardWrapper src='' >
           {filteredFormations.map((formation) => (
-            <Card key={formation.id} className="card">
+            <Card key={formation.id} className="card" onClick={() => {window.location.href = formation.url}}>
               <CardImg src={formation.image} />
-              <CardCaption>{formation.title}</CardCaption>
+                <CardContentWrapper>
+                <TopContent>
+                <TitleWrapper>
+                <CardCaption>{formation.title}</CardCaption>
+                <AuthorContent>{formation.author}</AuthorContent>
+                </TitleWrapper>
+                {formation.duration && (
+                  <CardCaption>{formatDuration(formation.duration)}</CardCaption>
+                )}
+                </TopContent>
+                <CardCaption className="description">{formation.description}</CardCaption>
+              </CardContentWrapper>
             </Card>
           ))}
         </CardWrapper>
@@ -320,6 +374,8 @@ const SearchBar = ({ value, onChange }) => {
       </Wrapper>
     );
   };
+  
+  
   
 
 
