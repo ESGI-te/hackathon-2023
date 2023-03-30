@@ -43,7 +43,9 @@
 				"answer": "Bleu",
 				"hasMultipleChoices": false
 			}
-		]
+		],
+		"isCompleted": true,
+		"isValid": false
 	},
 	"prev": {
 		"id": 1001

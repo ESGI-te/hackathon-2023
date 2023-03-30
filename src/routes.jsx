@@ -1,24 +1,24 @@
-import Formation from "./pages/Formation";
-import Formations from "./pages/Formations";
-import LessonWizard from "./pages/LessonWizard";
-import Home from "./pages/Home";
+import FormationPage from "./pages/FormationPage";
+import FormationsPage from "./pages/FormationsPage";
+import LessonPage from "./pages/LessonPage";
+import HomePage from "./pages/HomePage";
 
 const routes = [
 	{
 		path: "/",
-		element: <Home />,
+		element: <HomePage />,
 	},
 	{
 		path: "/formations",
-		element: <Formations />,
+		element: <FormationsPage />,
 	},
 	{
 		path: "/formations/:id",
-		element: <Formation />,
+		element: <FormationPage />,
 	},
 	{
 		path: "/formations/:formationId/lessons/:lessonId",
-		element: <LessonWizard />,
+		element: <LessonPage />,
 	},
 ];
 
