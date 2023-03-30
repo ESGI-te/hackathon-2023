@@ -1,11 +1,11 @@
-import FormationPage from "./pages/FormationPage";
-import FormationsPage from "./pages/FormationsPage";
-import LessonPage from "./pages/LessonPage";
-import HomePage from "./pages/HomePage";
+import FormationPage from "@pages/FormationPage";
+import FormationsPage from "@pages/FormationsPage";
+import LessonPage from "@pages/LessonPage";
+import HomePage from "@pages/HomePage";
 
 const routes = [
 	{
-		path: "/",
+		path: "",
 		element: <HomePage />,
 	},
 	{
