@@ -14,23 +14,17 @@ const routes = [
 		element: <HomePage />,
 	},
 	{
-
-		path: "/formation",
-		element: <FormationPage />,
+		path: "/formations",
+		element: <FormationsPage />,
 	},
 	,
 	{
-		path: "/formations/edit",
+		path: "/formations/:formationId/edit",
 		element: <FormationEditPage />,
 	},
 	{
-		path: "/formations/:id",
+		path: "/formations/:formationId",
 		element: <FormationPage />,
-	},
-	{
-
-		path: "/formations",
-		element: <FormationsPage />,
 	},
 	{
 		path: "/formations/:formationId/lessons/:lessonId",
@@ -43,21 +37,16 @@ const routes = [
 	// TODO replace with good routes
 	{
 		path: "/personnes",
-		element:  <LessonPage />
+		element: <LessonPage />,
 	},
 	{
 		path: "/flux",
-		element:  <FormationsForFormator />
-	},
-	{
-		path: "/logout",
-		element:  <LessonPage />
+		element: <FormationsForFormator />,
 	},
 	{
 		path: "/tasks",
-		element:  <CreateLesson />
+		element: <CreateLesson />,
 	},
-
 ];
 
 export default routes;
