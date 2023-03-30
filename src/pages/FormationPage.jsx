@@ -1,7 +1,5 @@
-import Formation from "../components/Formation";
-
 const FormationPage = () => {
-	return <Formation/>
+	return <div>Formation</div>;
 };
 
 export default FormationPage;
