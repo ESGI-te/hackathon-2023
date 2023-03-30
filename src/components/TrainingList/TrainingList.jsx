@@ -3,6 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import formationsData from './formationsData.json';
 import newsData from './newsData.json';
+import './TrainingList.css';
 
 const Wrapper = styled.div`
 background-color: #fff; 
@@ -63,10 +64,10 @@ const Card = styled.a`
   position: relative;
   flex-direction: column;
   margin: 20px;
-  width: 19rem;
+  width: 21rem;
   height: 100%;
   overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+  border: solid 1px black;
   transform-origin: center top;
   transform-style: preserve-3d;
   transform: translateZ(0);
@@ -108,16 +109,16 @@ const Card = styled.a`
     }
   }
   @media screen and (min-width: 425px) {
-    width: 22rem;
+    width: 24rem;
   }
   @media screen and (min-width: 768px) {
-    width: 28rem;
-  }
+    width:21.5rem;
+    }
   @media screen and (min-width: 1024px) {
-    width: 20.5rem;
-  }
+    width: 22rem;
+    }
   @media screen and (min-width: 1440px){
-    width: 21.5rem;
+    width: 22.5rem;
   }
 `;
 
@@ -186,6 +187,27 @@ margin: 20px;;
     height: 16rem;
   }
 `;
+
+const NewArticle = styled.figure`
+position: relative;
+overflow: hidden;
+width: 19rem;
+height: 12rem;
+margin: 20px;;
+@media screen and (min-width: 425px) {
+  width: 22rem;
+  height: 15rem;
+  }
+@media screen and (min-width: 768px) {
+  width: 21.5rem;
+  }
+@media screen and (min-width: 1024px) {
+  width: 22rem;
+}
+@media screen and (min-width: 1440px) {
+  width: 22.5rem;
+}
+`;
 const ArticleImg = styled.img`
 width: 100%;
 min-height: 100%;
@@ -227,7 +249,6 @@ h3 {
 const ArticleTitle = styled.h3`
 font-size: 1.5rem;
 font-weight: bold;
-margin: 1rem 0;
 `;
 
 const ArticleContent = styled.p`
@@ -243,7 +264,7 @@ const InputWrapper = styled.div`
     padding: 1rem;
     height: 2.5rem;
     font-size: 1rem;
-    width: 15.438rem;;
+    width: 20.7rem;
     margin-right: 20px;
     color: grey;
     box-shadow: 0 0.3rem #dfd9d9;
@@ -253,14 +274,30 @@ const InputWrapper = styled.div`
       outline-color: #1976d2;
     }
   }
+  @media screen and (min-width: 425px) {
+    input {
+      width: 23.8rem;
+      margin-bottom: 1rem;
+
+    }  
+  }
+  @media screen and (min-width: 768px) {
+    input {
+      width: 21.8rem;
+      margin-bottom: 0rem;
+    }  
+  }
   @media screen and (min-width: 1024px) {
     input {
-      width: 20.438rem;
+      width: 22.3rem;
+      margin-bottom: 0rem;
     }  
   }
   @media screen and (min-width: 1440px) {
     input {
-      width: 21.438rem;
+      width: 22.5rem;
+      margin-bottom: 0rem;
+
     }  
   }
 `;
@@ -280,16 +317,13 @@ padding: 10px;
 
 const TopContent = styled.div`
 display:flex;
+margin-bottom: 0.2rem;
 justify-content: space-between;`;
 
-const TitleWrapper = styled.div`
-display:flex;
-flex-direction: column;
-`;
 const AuthorContent = styled.p`
 color:grey;
 font-size:0.7rem;
-margin-bottom:10px;
+place-self: center;
 `;
 
 const SearchBar = ({ value, onChange }) => {
@@ -314,6 +348,14 @@ const SearchBar = ({ value, onChange }) => {
     }
   };
   
+  const filterFormationsByStatusAndTitle = (formations, status, searchTerm) => {
+    return formations.filter(
+      (formation) =>
+        formation.status === status &&
+        formation.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  };  
+
   const List = () => {
     const [searchTerm, setSearchTerm] = useState("");
   
@@ -321,40 +363,108 @@ const SearchBar = ({ value, onChange }) => {
       setSearchTerm(event.target.value);
     };
   
-    const filteredFormations = formationsData.filter(
-      (formation) =>
-        formation.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-        formation.duration
-    );
-  
+    const filteredInProgressFormations = filterFormationsByStatusAndTitle(formationsData, "inprogress", searchTerm);
+    const filteredCompletedFormations = filterFormationsByStatusAndTitle(formationsData, "completed", searchTerm);
     return (
       <Wrapper>
-        <Title>
-          <strong>Formations</strong>
-          <span>({filteredFormations.length})</span>
-        </Title>
         <SearchWrapper>
           <InputWrapper>
             <SearchBar value={searchTerm} onChange={handleSearch} />
           </InputWrapper>
         </SearchWrapper>
-        <CardWrapper src='' >
-          {filteredFormations.map((formation) => (
-            <Card key={formation.id} className="card" onClick={() => {window.location.href = formation.url}}>
-              <CardImg src={formation.image} />
+        {filteredInProgressFormations.length > 0 && (
+          <>
+            <Title>
+              <strong>In Progress</strong>
+            </Title>
+            <CardWrapper>
+              {filteredInProgressFormations.map((formation) => (
+                <Card key={formation.id} className="card">
+                  <CardImg src={formation.image} />
+                  <CardContentWrapper>
+                    <TopContent>
+                      <CardCaption>{formation.title}</CardCaption>
+                      <div className="time">
+                        <img className="clock" src="../../../public/icons/clock.svg" />
+                        {formation.duration && (
+                          <CardCaption>{formatDuration(formation.duration)}</CardCaption>
+                        )}
+                      </div>
+                    </TopContent>
+                    <TopContent>
+                    <AuthorContent>{formation.author}</AuthorContent>
+                    <div className="time">
+                    <img className="clock" src="../../../public/icons/book.svg" />
+                    <CardCaption>{formation.nblessons}</CardCaption>
+                    </div>
+                    </TopContent>
+                    <CardCaption>{formation.description}</CardCaption>
+                  </CardContentWrapper>
+                </Card>
+              ))}
+            </CardWrapper>
+          </>
+        )}
+        {filteredCompletedFormations.length > 0 && (
+          <>
+            <Title>
+              <strong>Completed</strong>
+            </Title>
+            <CardWrapper>
+              {filteredCompletedFormations.map((formation) => (
+                <Card key={formation.id} className="card">
+                <CardImg src={formation.image} />
                 <CardContentWrapper>
-                <TopContent>
-                <TitleWrapper>
-                <CardCaption>{formation.title}</CardCaption>
-                <AuthorContent>{formation.author}</AuthorContent>
-                </TitleWrapper>
-                {formation.duration && (
-                  <CardCaption>{formatDuration(formation.duration)}</CardCaption>
-                )}
-                </TopContent>
-                <CardCaption className="description">{formation.description}</CardCaption>
-              </CardContentWrapper>
-            </Card>
+                  <TopContent>
+                    <CardCaption>{formation.title}</CardCaption>
+                    <div className="time">
+                      <img className="clock" src="../../../public/icons/clock.svg" />
+                      {formation.duration && (
+                        <CardCaption>{formatDuration(formation.duration)}</CardCaption>
+                      )}
+                    </div>
+                  </TopContent>
+                  <TopContent>
+                  <AuthorContent>{formation.author}</AuthorContent>
+                  <div className="time">
+                  <img className="clock" src="../../../public/icons/book.svg" />
+                  <CardCaption>{formation.nblessons}</CardCaption>
+                  </div>
+                  </TopContent>
+                  <CardCaption>{formation.description}</CardCaption>
+                </CardContentWrapper>
+              </Card>
+              ))}
+            </CardWrapper>
+          </>
+        )}
+        <Title>
+          <strong>Formations</strong>
+        </Title>
+        <CardWrapper>
+          {formationsData.map((formation) => (
+                <Card key={formation.id} className="card">
+                <CardImg src={formation.image} />
+                <CardContentWrapper>
+                  <TopContent>
+                    <CardCaption>{formation.title}</CardCaption>
+                    <div className="time">
+                      <img className="clock" src="../../../public/icons/clock.svg" />
+                      {formation.duration && (
+                        <CardCaption>{formatDuration(formation.duration)}</CardCaption>
+                      )}
+                    </div>
+                  </TopContent>
+                  <TopContent>
+                  <AuthorContent>{formation.author}</AuthorContent>
+                  <div className="time">
+                  <img className="clock" src="../../../public/icons/book.svg" />
+                  <CardCaption>{formation.nblessons}</CardCaption>
+                  </div>
+                  </TopContent>
+                  <CardCaption>{formation.description}</CardCaption>
+                </CardContentWrapper>
+              </Card>
           ))}
         </CardWrapper>
         <Title>
@@ -362,22 +472,18 @@ const SearchBar = ({ value, onChange }) => {
         </Title>
         <NewsWrapper className="news">
           {newsData.map((news) => (
-            <Article key={news.id} className="article">
+            <NewArticle key={news.id} className="article">
               <ArticleImg src={news.image} />
               <ArticleCaption>
                 <ArticleTitle>{news.title}</ArticleTitle>
                 <ArticleContent>{news.content}</ArticleContent>
               </ArticleCaption>
-            </Article>
+            </NewArticle>
           ))}
         </NewsWrapper>
       </Wrapper>
     );
   };
   
-  
-  
-
-
 export default List;
 

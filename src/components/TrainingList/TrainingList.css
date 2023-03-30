@@ -1,0 +1,9 @@
+.time{
+    display: flex;
+    align-items: center;
+}
+
+.clock{
+    height: 15px;
+    margin-right: 0.5rem;
+}
