@@ -12,3 +12,15 @@ export const MEDIA_QUERIES = {
 		BREAKPOINTS.DESKTOP_LARGE_MIN / 16
 	}rem)`,
 };
+
+export const FORMATION_DIFFICULTIES = {
+	EASY: "easy",
+	NORMAL: "normal",
+	HARD: "hard",
+};
+
+export const FORMATION_DIFFICULTIES_NAMES = {
+	[FORMATION_DIFFICULTIES.EASY]: "Facile",
+	[FORMATION_DIFFICULTIES.NORMAL]: "Intermédiaire",
+	[FORMATION_DIFFICULTIES.HARD]: "Avancé",
+};
