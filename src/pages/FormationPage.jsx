@@ -1,5 +1,7 @@
-const Formation = () => {
-	return <div>Formation</div>;
+import Formation from "../components/Formation";
+
+const FormationPage = () => {
+	return <Formation/>
 };
 
-export default Formation;
+export default FormationPage;

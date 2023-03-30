@@ -2,7 +2,7 @@ import Drawer from "@mui/material/Drawer";
 import { Box } from "@mui/material";
 import DrawerNavMenu from "../DrawerNavMenu";
 
-export const DRAWER_WIDTH = 240;
+export const DRAWER_WIDTH = 170;
 
 const Menu = ({ handleToggleDrawer, drawerIsOpen }) => {
 	const container = window.document.body;
