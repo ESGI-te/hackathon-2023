@@ -1,13 +1,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
-export default function useAddShow(lessonId) {
+export default function useAddFormation() {
 	const queryClient = useQueryClient();
-
-	if (!lessonId) throw new Error("A lessonId must be provided to useAddShow");
+	const history = useNavigate();
 
 	return useMutation({
 		mutationFn: async (formData) => {
-			const response = await fetch("/api/quizz", {
+			const response = await fetch("/api/formations", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -22,13 +22,13 @@ export default function useAddShow(lessonId) {
 			 * Cancel any outgoing refetches
 			 * (so they don't overwrite our optimistic update)
 			 */
-			await queryClient.cancelQueries({ queryKey: ["lesson"] });
+			await queryClient.cancelQueries({ queryKey: ["formations"] });
 
 			// Snapshot the previous value
-			const previousState = queryClient.getQueryData(["lesson"]);
+			const previousState = queryClient.getQueryData(["formations"]);
 
 			// Optimistically update to the new value
-			queryClient.setQueryData(["lesson"], () => data);
+			queryClient.setQueryData(["formations"], () => data);
 
 			// Return a context object with the snapshotted value
 			return { previousState };
@@ -38,14 +38,17 @@ export default function useAddShow(lessonId) {
 		 * use the context returned from onMutate to roll back
 		 */
 		onError: (err, data, context) => {
-			queryClient.setQueryData(["lesson"], context.previousState);
+			queryClient.setQueryData(["formations"], context.previousState);
 		},
-		onSuccess: (response) => {},
+		onSuccess: (response) => {
+			const formation = response.json();
+			history.push(`/formations/${formation.id}/edit`);
+		},
 		/**
 		 * Always refetch after error or success:
 		 */
 		onSettled: () => {
-			queryClient.invalidateQueries({ queryKey: ["lesson", lessonId] });
+			queryClient.invalidateQueries({ queryKey: ["formations"] });
 		},
 	});
 }
