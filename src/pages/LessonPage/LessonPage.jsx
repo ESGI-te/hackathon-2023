@@ -31,7 +31,7 @@ const ContentContainer = styled(Container)`
 	background-color: var(--neutral100);
 `;
 
-const ActionBarContainer = styled.div`
+const NavigatorContainer = styled.div`
 	width: 100%;
 	min-height: 80px;
 	border-radius: 0.25rem;
@@ -63,11 +63,11 @@ const ButtonsWrapper = styled.div`
 	column-gap: 0.5rem;
 `;
 
-const ActionButton = styled(Button)`
+const NavigatorButton = styled(Button)`
 	text-transform: capitalize !important;
 `;
 
-const ThreadNavigationWrapper = styled.div`
+const NavigatorThreadWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	column-gap: 0.25rem;
@@ -78,8 +78,8 @@ const ThreadNavigationWrapper = styled.div`
 	}
 `;
 
-const ThreadNavigation = ({ data }) => (
-	<ThreadNavigationWrapper>
+const NavigatorThread = ({ data }) => (
+	<NavigatorThreadWrapper>
 		<Typography as={Link} variant="caption">
 			{data?.formation.title}
 		</Typography>
@@ -91,22 +91,22 @@ const ThreadNavigation = ({ data }) => (
 		<Typography as={Link} variant="caption">
 			{data?.current.title}
 		</Typography>
-	</ThreadNavigationWrapper>
+	</NavigatorThreadWrapper>
 );
 
-const ActionBar = ({ isLoading, data }) => {
+const Navigator = ({ isLoading, data }) => {
 	const { isDesktop } = useResponsive();
 	const { formationId } = useParams();
 	const prevLessonLink = `/formations/${formationId}/lessons/${data?.prev.id}`;
 	const nextLessonLink = `/formations/${formationId}/lessons/${data?.next.id}`;
 
 	return (
-		<ActionBarContainer>
-			<ThreadNavigation data={data} />
+		<NavigatorContainer>
+			<NavigatorThread data={data} />
 			<ButtonsWrapper>
 				{isDesktop ? (
 					<>
-						<ActionButton
+						<NavigatorButton
 							component={Link}
 							to={prevLessonLink}
 							size="small"
@@ -114,8 +114,8 @@ const ActionBar = ({ isLoading, data }) => {
 							disabled={isLoading}
 						>
 							Leçon précédente
-						</ActionButton>
-						<ActionButton
+						</NavigatorButton>
+						<NavigatorButton
 							component={Link}
 							to={nextLessonLink}
 							size="small"
@@ -123,7 +123,7 @@ const ActionBar = ({ isLoading, data }) => {
 							disabled={isLoading}
 						>
 							Leçon suivante
-						</ActionButton>{" "}
+						</NavigatorButton>{" "}
 					</>
 				) : (
 					<>
@@ -136,26 +136,22 @@ const ActionBar = ({ isLoading, data }) => {
 					</>
 				)}
 			</ButtonsWrapper>
-		</ActionBarContainer>
+		</NavigatorContainer>
 	);
 };
 
-const LessonWizard = () => {
+const LessonPage = () => {
 	const { lessonId } = useParams();
 	const { data, isLoading } = useFetchLesson(lessonId);
 	const isQuizz = data && data.current.questions;
 
 	return (
 		<PageContainer>
-			<ActionBar isLoading={isLoading} data={data} />
+			<Navigator isLoading={isLoading} data={data} />
 			{isLoading && <CircularProgress />}
 			{data && data.current ? (
 				<ContentContainer maxWidth="md">
-					{isQuizz ? (
-						<Quizz quizz={data.current} />
-					) : (
-						<Lesson lesson={data.current} />
-					)}
+					{isQuizz ? <Quizz quizz={data} /> : <Lesson lesson={data.current} />}
 				</ContentContainer>
 			) : (
 				<Typography variant="h5">Oups, une erreur est survenue !</Typography>
@@ -164,4 +160,4 @@ const LessonWizard = () => {
 	);
 };
 
-export default LessonWizard;
+export default LessonPage;
