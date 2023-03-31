@@ -5,7 +5,7 @@ import HomePage from "@pages/HomePage";
 import FormationCreatePage from "@pages/FormationCreatePage";
 //todo add role check
 import FormationsForFormator from "@pages/Formation/FormationsForFormator";
-import TeachingFormation from "@pages/Formation/TeachingFormation";
+import TeachingFormationsPage from "@/pages/TeachingFormationsPage";
 
 import CreateLesson from "@pages/Formation/CreateLesson";
 import FormationEditPage from "@pages/FormationEditPage";
@@ -20,10 +20,6 @@ const routes = [
 		element: <FormationsPage />,
 	},
 	,
-	{
-		path: "/formations/formationId/edit",
-		element: <FormationEditPage />,
-	},
 	{
 		path: "/formations/:formationId",
 		element: <FormationPage />,
@@ -49,11 +45,14 @@ const routes = [
 		path: "/tasks",
 		element: <CreateLesson />,
 	},
-
-{
-		path: "/teaching/formation",
-		element: <TeachingFormation />,
-}
+	{
+		path: "/teaching/formations/:formationId/edit",
+		element: <FormationEditPage />,
+	},
+	{
+		path: "/teaching/formations",
+		element: <TeachingFormationsPage />,
+	}
 ];
 
 export default routes;

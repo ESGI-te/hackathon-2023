@@ -16,11 +16,13 @@ import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import styled from "styled-components";
 import { Typography } from "@mui/material";
+import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
-import useFetchLessons from "./useFetchLessons.hook";
-import FormationCreateLessonForm from "../FormationCreateLessonForm/FormationCreateLessonForm";
+import useFetchFormations from "@utils/hooks/useFetchFormations.hook";
+import { Link } from "react-router-dom";
 
 const PageContainer = styled.div`
 	padding-block: 1rem;
@@ -98,37 +100,20 @@ function createData(name, calories, fat) {
 	return { name, calories, fat };
 }
 
-export default function FormationEditLesson() {
+export default function CustomPaginationActionsTable() {
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(10);
-	const [editModalIsOpen, setEditModalIsOpen] = useState(false);
-	const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
-	const [currentLesson, setCurrentLesson] = useState(false);
+	const [open, setOpen] = useState(false);
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
 
-	const { data: rows, isLoading, error } = useFetchLessons();
+	const { data: rows, isLoading, error } = useFetchFormations();
 
 	if (isLoading) {
 		return <div>Loading...</div>;
 	}
 
 	if (error) return "An error has occurred: " + error.message;
-
-	const handleDeleteFormation = (id) => {
-		// delete formation on server
-	};
-
-	const handleOpenEditmodal = (lesson) => {
-		setEditModalIsOpen(true);
-		setCurrentLesson(lesson);
-	};
-	const handleCloseEditModal = () => setEditModalIsOpen(false);
-
-	const handleOpenDeletemodal = (lesson) => {
-		setDeleteModalIsOpen(true);
-		setCurrentLesson(lesson);
-	};
-
-	const handleCloseDeleteModal = () => setDeleteModalIsOpen(false);
 
 	// Avoid a layout jump when reaching the last page with empty rows.
 	const emptyRows =
@@ -143,6 +128,8 @@ export default function FormationEditLesson() {
 		setPage(0);
 	};
 
+	const handleDeleteFormation = (id) => {};
+
 	return (
 		<PageContainer>
 			<Typography
@@ -150,7 +137,7 @@ export default function FormationEditLesson() {
 				component="h1"
 				sx={{ fontWeight: 700, marginBottom: "1rem" }}
 			>
-				Mes leçons
+				Mes formations enseignées
 			</Typography>
 			<TableContainer component={Paper}>
 				<Table aria-label="custom pagination table">
@@ -164,13 +151,13 @@ export default function FormationEditLesson() {
 									{row.title}
 								</TableCell>
 								<TableCell style={{ width: 160 }} align="right">
-									<IconButton
-										color="error"
-										onClick={() => handleOpenDeletemodal(row)}
-									>
+									<IconButton color="error" onClick={handleOpen}>
 										<Delete />
 									</IconButton>
-									<IconButton onClick={() => handleOpenEditmodal(row)}>
+									<IconButton
+										LinkComponent={Link}
+										to={`/teaching/formations/${row.id}/edit`}
+									>
 										<Edit />
 									</IconButton>
 								</TableCell>
@@ -207,33 +194,8 @@ export default function FormationEditLesson() {
 			<Modal
 				aria-labelledby="transition-modal-title"
 				aria-describedby="transition-modal-description"
-				open={editModalIsOpen}
-				onClose={handleCloseEditModal}
-				closeAfterTransition
-			>
-				<Box
-					sx={{
-						position: "absolute",
-						top: "50%",
-						left: "50%",
-						transform: "translate(-50%, -50%)",
-						maxWidth: 1000,
-						width: "100%",
-						bgcolor: "var(--neutral100)",
-						border: "1px solid var(--neutral300)",
-						boxShadow: "0px 16px 32px rgba(23, 43, 77, 0.16)",
-						p: 4,
-						borderRadius: "0.5rem",
-					}}
-				>
-					<FormationCreateLessonForm lesson={currentLesson} />
-				</Box>
-			</Modal>
-			<Modal
-				aria-labelledby="transition-modal-title"
-				aria-describedby="transition-modal-description"
-				open={deleteModalIsOpen}
-				onClose={handleCloseDeleteModal}
+				open={open}
+				onClose={handleClose}
 				closeAfterTransition
 			>
 				<Box
@@ -252,10 +214,7 @@ export default function FormationEditLesson() {
 					}}
 				>
 					<Typography variant="h6" component="h2">
-						Êtes-vous sûr de vouloir supprimer cette leçon ?
-					</Typography>
-					<Typography variant="body1" component="h2">
-						{currentLesson.title}
+						Êtes-vous sûr de vouloir supprimer cette formation ?
 					</Typography>
 					<Box
 						sx={{
@@ -265,8 +224,9 @@ export default function FormationEditLesson() {
 							paddingTop: "3rem",
 						}}
 					>
-						<Button variant="contained" onClick={handleCloseDeleteModal}>
-							Annuler
+						<Button variant="contained" onClick={handleClose}>
+							{" "}
+							Cancel
 						</Button>
 						<Button
 							variant="contained"
@@ -274,7 +234,7 @@ export default function FormationEditLesson() {
 							onClick={handleDeleteFormation}
 						>
 							{" "}
-							Supprimer
+							Delete
 						</Button>
 					</Box>
 				</Box>

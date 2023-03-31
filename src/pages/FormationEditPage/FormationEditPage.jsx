@@ -17,9 +17,25 @@ const ContentContainer = styled(Container)`
 	border-radius: 0.25rem;
 	padding: 1rem;
 	background-color: var(--neutral100);
-	margin-top:4rem;
 `;
 
+const PageContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	row-gap: 2rem;
+	padding-top: calc(80px + 1rem);
+	padding-block: 1rem;
+	padding-inline: 1rem;
+
+	${(p) => p.theme.mediaQueries.desktopAndUp} {
+		padding-block: 1.5rem;
+		padding-inline: 1.5rem;
+	}
+`;
+
+const Pannel = styled(TabPanel)`
+	padding-top: 80px;
+`;
 
 const Tabbar = styled(AppBar)`
 	position: fixed;
@@ -64,7 +80,7 @@ export default function FormationEditPage() {
 	};
 
 	return (
-		<Box>
+		<PageContainer>
 			<Tabbar>
 				<Tabs
 					value={value}
@@ -80,18 +96,18 @@ export default function FormationEditPage() {
 					<Tab label="Quizz" {...a11yProps(3)} />
 				</Tabs>
 			</Tabbar>
-			<TabPanel value={value} index={0} dir={theme.direction}>
+			<Pannel value={value} index={0} dir={theme.direction}>
 				<FormationEditDetails data={formationsData}/>
-			</TabPanel>
-			<TabPanel value={value} index={1} dir={theme.direction}>
+			</Pannel>
+			<Pannel value={value} index={1} dir={theme.direction}>
 				<FormationEditChapters />
-			</TabPanel>
-			<TabPanel value={value} index={2} dir={theme.direction}>
+			</Pannel>
+			<Pannel value={value} index={2} dir={theme.direction}>
 				<FormationEditLessons />
-			</TabPanel>
-			<TabPanel value={value} index={3} dir={theme.direction}>
+			</Pannel>
+			<Pannel value={value} index={3} dir={theme.direction}>
 				<FormationEditQuizz />
-			</TabPanel>
-		</Box>
+			</Pannel>
+		</PageContainer>
 	);
 }
