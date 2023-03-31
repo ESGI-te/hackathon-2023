@@ -2,12 +2,11 @@ import { Typography, Container, Stack, Button, Modal } from "@mui/material";
 import { useState } from "react";
 import formation from "./formationsData1.json";
 import styled from "styled-components";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { formatDuration } from "@/utils/helpers";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { Box } from "@mui/system";
 import FormationEditDetailsForm from "../FormationEditDetailsForm";
-import { formatDuration } from "@/utils/helpers";
-import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 
 const DetailsContainer = styled(Container)`
   display: flex !important;
@@ -116,6 +115,7 @@ const FormationEditDetails = ({ data, onUpdate }) => {
         </Box>
       </Modal>
     </>
+
   );
 };
 
