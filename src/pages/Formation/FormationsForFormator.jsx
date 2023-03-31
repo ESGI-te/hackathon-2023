@@ -1,8 +1,10 @@
-import {Box, Button} from "@mui/material";
+import { Box, Button } from "@mui/material";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import LearnTraining from "@images/learn-training.png";
 import TeachTraining from "@images/teach-training.png";
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 const StyledChoiceBox = styled.div`
   display: flex;
@@ -10,44 +12,60 @@ const StyledChoiceBox = styled.div`
   border: 1px solid black;
   border-radius: 1em;
   padding: 1em;
-
+  width: 80%;
+  margin: 4em auto;
 
   img {
-	width: 50%;
+    width: 60%;
   }
+`;
 
-`; 
-  
 const Formations = () => {
+  return (
+    <StyledChoiceBox>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+		  justifyContent: "flex-end"
+        }}
+      >
+        <img src={LearnTraining} alt="Learn training" />
+        <Button variant="contained" 
+		as={Link}
+		to={`/formations/1`} sx={{
+			display: "flex" ,
+		}}>
+          Voir mes formations suivies
+          <ArrowRightAltIcon sx={{
+			marginLeft: "0.5em"
+		  }}/>
+        </Button>
+      </Box>
 
-	return (
-		<StyledChoiceBox>
-			<Box
-				sx={{
-					display: "flex",
-					flexDirection: "column",
-					alignItems: "center",
-				}}
-			>
-			<img src={LearnTraining} alt="Learn training"/>
-			<Button variant="contained">Learn</Button>
-			</Box>
-
-			<Box
-				sx={{
-					display: "flex",
-					flexDirection: "column",
-					alignItems: "center",
-				}}
-			>
-			<img src={TeachTraining} alt="Teach training"/>
-			<Button variant="contained">Learn</Button>
-			</Box>
-		
-
-		</StyledChoiceBox>
-
-	)
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+		  justifyContent: "flex-end"
+        }}
+      >
+        <img src={TeachTraining} alt="Teach training" />
+        <Button variant="contained"
+			as={Link}
+			to={`/teaching/formation`} sx={{
+				display: "flex" ,
+			}}>
+          Voir mes formations enseignées
+          <ArrowRightAltIcon sx={{
+			marginLeft: "0.5em"
+		  }}/>
+        </Button>
+      </Box>
+    </StyledChoiceBox>
+  );
 };
 
 export default Formations;
