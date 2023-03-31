@@ -4,7 +4,7 @@ import formationsData from "./formationsData.json";
 import newsData from "./newsData.json";
 import "./TrainingList.css";
 import { Link } from "react-router-dom";
-
+import { formatDuration } from "@/utils/helpers";
 const Wrapper = styled.div`
 	background-color: #fff;
 	font-family: "Alegreya Sans";
@@ -323,18 +323,6 @@ const SearchBar = ({ value, onChange }) => {
 	);
 };
 
-const formatDuration = (duration) => {
-	if (duration < 60 * 60 * 1000) {
-		const minutes = Math.floor(duration / (60 * 1000));
-		return `${minutes} minutes`;
-	} else {
-		const hours = Math.floor(duration / (60 * 60 * 1000));
-		const remainingMinutes = Math.floor(
-			(duration % (60 * 60 * 1000)) / (60 * 1000)
-		);
-		return `${hours} h ${remainingMinutes} min`;
-	}
-};
 
 const filterFormationsByStatusAndTitle = (formations, status, searchTerm) => {
 	return formations.filter(
