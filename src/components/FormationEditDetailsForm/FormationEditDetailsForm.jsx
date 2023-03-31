@@ -47,7 +47,7 @@ const UploadButton = styled(Button)`
 
 const FormationCreateForm = ({formation}) => {
 	const { control, handleSubmit, formState,getValues} = useForm({
-		defaultValues: {
+		values: {
 			title: formation.title|| "",
 			description:formation.description|| "",
 			difficulty: formation.difficulty||FORMATION_DIFFICULTIES.NORMAL,
@@ -79,7 +79,7 @@ const FormationCreateForm = ({formation}) => {
 				render={({ field: { onChange, value } }) => (
 					<TextField
 						onChange={onChange}
-						defaultValue={formation.title || value}
+						value={value}
 						label="Titre de la formation"
 						autoFocus
 					/>
@@ -94,7 +94,7 @@ const FormationCreateForm = ({formation}) => {
 						aria-label="Description"
 						placeholder="Description de la formation"
 						onChange={onChange}
-						defaultValue={ formation.description || value}
+						value={value}
 						minRows={6}
 					/>
 				)}
@@ -109,7 +109,7 @@ const FormationCreateForm = ({formation}) => {
 						id="create-formation-select"
 						label="Difficulté"
 						onChange={onChange}
-						defaultValue={formation.difficulty || value}
+						value={value}
 					>
 						{Object.values(FORMATION_DIFFICULTIES).map((difficulty, i) => (
 							<MenuItem key={i} value={difficulty}>

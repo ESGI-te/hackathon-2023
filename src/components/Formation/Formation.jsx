@@ -4,8 +4,7 @@ import LinearProgress, {
 } from "@mui/material/LinearProgress";
 import { Fragment, useState } from "react";
 import styled from "styled-components";
-
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ListSubheader from "@mui/material/ListSubheader";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -17,7 +16,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import ManagerFormationImg from "./assets-mock/manager-formation.jpeg";
-import { useFetchFormation } from "../../hooks/fecthFormation";
+import useFetchFormation from "@/utils/hooks/useFetchFormation.hook";
 
 const BorderLinearProgress = styled(LinearProgress)`
 	height: 15px !important;
@@ -64,7 +63,6 @@ const StyledProgressContainer = styled.div`
 export const Formation = () => {
 	// keek the opened Id
 	const [open, setOpen] = useState("");
-	const navigate = useNavigate();
 
 	const handleClick = (id) => {
 		if (open === id) {
@@ -72,12 +70,6 @@ export const Formation = () => {
 			return;
 		}
 		setOpen(id);
-	};
-
-	const redirectToLesson = () => {
-		// TODO
-
-		navigate("/lesson");
 	};
 
 	const { data: formation, isLoading, error } = useFetchFormation();

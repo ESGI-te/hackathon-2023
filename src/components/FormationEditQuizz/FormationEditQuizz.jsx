@@ -1,7 +1,11 @@
-const FormationEditQuizz = () => {
-  return (
-    <div>FormationEditQuizz</div>
-  )
-}
+import FormationEditQuizzForm from "@components/FormationEditQuizzForm";
 
-export default FormationEditQuizz
+const FormationEditQuizz = () => {
+	return (
+		<div>
+			<FormationEditQuizzForm />
+		</div>
+	);
+};
+
+export default FormationEditQuizz;
