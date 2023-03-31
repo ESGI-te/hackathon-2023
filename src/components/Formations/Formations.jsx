@@ -5,12 +5,14 @@ import newsData from "./newsData.json";
 import "./TrainingList.css";
 import { Link } from "react-router-dom";
 import { formatDuration } from "@/utils/helpers";
+import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+
 const Wrapper = styled.div`
 	background-color: #fff;
 	font-family: "Alegreya Sans";
 `;
 
-const Title = styled.h2`
+const Title = styled(Typography)`
 	position: relative;
 	padding: 10px;
 	padding-left: 25px;
@@ -21,11 +23,12 @@ const Title = styled.h2`
 	strong {
 		position: relative;
 		z-index: 2;
-		background-color: #1976d2;
+		background-color: #5e82b6;
 		padding: 4px 8px;
 		color: white;
 		display: inline-flex;
 		align-items: middle;
+		border-radius: 0.5rem;
 		@media screen and (min-width: 1024px) {
 			font-size: 1.2rem;
 		}
@@ -36,7 +39,7 @@ const Title = styled.h2`
 		position: inherit;
 		background-color: white;
 		z-index: 2;
-		color: rgb(25, 118, 210);
+		color: #ebeff5;
 		margin-left: 20px;
 		display: content;
 		align-items: middle;
@@ -51,7 +54,7 @@ const Title = styled.h2`
 		height: 2px;
 		left: 0;
 		right: 0;
-		background-color: #1976d2;
+		background-color: #ebeff5;
 	}
 `;
 
@@ -59,76 +62,9 @@ const CardWrapper = styled.div`
 	display: flex;
 	margin-top: 1rem;
 	flex-flow: row wrap;
+	gap: 1rem;
+	padding: 1.5rem;
 `;
-
-const Card = styled(Link)`
-	display: flex;
-	position: relative;
-	flex-direction: column;
-	margin: 20px;
-	width: 21rem;
-	height: 100%;
-	overflow: hidden;
-	border: solid 1px black;
-	transform-origin: center top;
-	transform-style: preserve-3d;
-	transform: translateZ(0);
-	transition: 0.3s;
-
-	&:after {
-		content: "";
-		position: absolute;
-		z-index: 10;
-		width: 200%;
-		height: 100%;
-		top: -90%;
-		left: -20px;
-		opacity: 0.1;
-		transform: rotate(45deg);
-		background: linear-gradient(
-			to top,
-			transparent,
-			#fff 15%,
-			rgba(255, 255, 255, 0.5)
-		);
-		transition: 0.3s;
-	}
-
-	&:hover,
-	&:focus,
-	&:active {
-		box-shadow: 0 8px 16px 3px rgba(0, 0, 0, 0.6);
-		transform: translateY(-1px) scale(1.001) rotateX(0deg);
-		&:after {
-			transform: rotate(25deg);
-			opacity: 0.15;
-		}
-	}
-
-	@media screen and (max-width: 768px) {
-		flex-direction: column;
-		height: auto;
-		&:hover {
-			transform: none;
-			&:after {
-				transform: none;
-			}
-		}
-	}
-	@media screen and (min-width: 425px) {
-		width: 24rem;
-	}
-	@media screen and (min-width: 768px) {
-		width: 21.5rem;
-	}
-	@media screen and (min-width: 1024px) {
-		width: 22rem;
-	}
-	@media screen and (min-width: 1440px) {
-		width: 22.5rem;
-	}
-`;
-
 const CardImg = styled.img`
 	width: 100%;
 	height: 50%;
@@ -258,7 +194,7 @@ const InputWrapper = styled.div`
 		cursor: pointer;
 
 		&:focus {
-			outline-color: #1976d2;
+			outline-color: #ebeff5;
 		}
 	}
 	@media screen and (min-width: 425px) {
@@ -296,21 +232,6 @@ const SearchWrapper = styled.div`
 		flex-direction: row-reverse;
 	}
 `;
-const CardContentWrapper = styled.div`
-	padding: 10px;
-`;
-
-const TopContent = styled.div`
-	display: flex;
-	margin-bottom: 0.2rem;
-	justify-content: space-between;
-`;
-
-const AuthorContent = styled.p`
-	color: grey;
-	font-size: 0.7rem;
-	place-self: center;
-`;
 
 const SearchBar = ({ value, onChange }) => {
 	return (
@@ -319,10 +240,10 @@ const SearchBar = ({ value, onChange }) => {
 			placeholder="Search..."
 			value={value}
 			onChange={onChange}
+			style={{ borderRadius: "0.5rem" }}
 		/>
 	);
 };
-
 
 const filterFormationsByStatusAndTitle = (formations, status, searchTerm) => {
 	return formations.filter(
@@ -333,27 +254,71 @@ const filterFormationsByStatusAndTitle = (formations, status, searchTerm) => {
 };
 
 const FormationCard = ({ formation }) => (
-	<Card to={`/formations/${formation.id}`} key={formation.id} className="card">
-		<CardImg src={formation.cover_url} />
-		<CardContentWrapper>
-			<TopContent>
-				<CardCaption>{formation.title}</CardCaption>
-				<div className="time">
-					<img className="clock" src="../../../public/icons/clock.svg" />
+	// <Card to={`/formations/${formation.id}`} key={formation.id} className="card">
+	// 	<CardImg src={formation.cover_url} />
+	// 	<CardContentWrapper>
+	// 		<TopContent>
+	// 			<CardCaption>{formation.title}</CardCaption>
+	// 			<div className="time">
+	// 				<img className="clock" src="../../../public/icons/clock.svg" />
+	// 				{formation.duration && (
+	// 					<CardCaption>{formatDuration(formation.duration)}</CardCaption>
+	// 				)}
+	// 			</div>
+	// 		</TopContent>
+	// 		<TopContent>
+	// 			<AuthorContent>{formation.author}</AuthorContent>
+	// 			<div className="time">
+	// 				<img className="clock" src="../../../public/icons/book.svg" />
+	// 				<CardCaption>{formation.nblessons}</CardCaption>
+	// 			</div>
+	// 		</TopContent>
+	// 		<CardCaption>{formation.description}</CardCaption>
+	// 	</CardContentWrapper>
+	// </Card>
+	<Card
+		component={Link}
+		to={`/formations/${formation.id}`}
+		sx={{ maxWidth: 345 }}
+	>
+		<CardMedia
+			sx={{ height: 140 }}
+			image={formation.cover_url}
+			title={formation.title}
+		/>
+		<CardContent>
+			<Typography gutterBottom variant="h5" component="div">
+				{formation.title}
+			</Typography>
+			<Typography variant="body2" color="text.secondary">
+				{formation.description}
+			</Typography>
+			<Box
+				sx={{
+					display: "flex",
+					alignItems: "center",
+					columnGap: "1rem",
+					paddingTop: "1rem",
+				}}
+			>
+				<Box
+					sx={{ display: "flex", alignItems: "center", columnGap: "0.25rem" }}
+				>
+					<img src="/public/icons/clock.svg" />
 					{formation.duration && (
-						<CardCaption>{formatDuration(formation.duration)}</CardCaption>
+						<Typography variant="caption">
+							{formatDuration(formation.duration)}
+						</Typography>
 					)}
-				</div>
-			</TopContent>
-			<TopContent>
-				<AuthorContent>{formation.author}</AuthorContent>
-				<div className="time">
-					<img className="clock" src="../../../public/icons/book.svg" />
+				</Box>
+				<Box
+					sx={{ display: "flex", alignItems: "center", columnGap: "0.25rem" }}
+				>
+					<img src="/public/icons/book.svg" />
 					<CardCaption>{formation.nblessons}</CardCaption>
-				</div>
-			</TopContent>
-			<CardCaption>{formation.description}</CardCaption>
-		</CardContentWrapper>
+				</Box>
+			</Box>
+		</CardContent>
 	</Card>
 );
 
