@@ -346,7 +346,7 @@ const filterFormationsByStatusAndTitle = (formations, status, searchTerm) => {
 
 const FormationCard = ({ formation }) => (
 	<Card to={`/formations/${formation.id}`} key={formation.id} className="card">
-		<CardImg src={formation.image} />
+		<CardImg src={formation.cover_url} />
 		<CardContentWrapper>
 			<TopContent>
 				<CardCaption>{formation.title}</CardCaption>
@@ -431,7 +431,7 @@ const List = () => {
 			<NewsWrapper className="news">
 				{newsData.map((news) => (
 					<NewArticle key={news.id} className="article">
-						<ArticleImg src={news.image} />
+						<ArticleImg src={news.cover_url} />
 						<ArticleCaption>
 							<ArticleTitle>{news.title}</ArticleTitle>
 							<ArticleContent>{news.content}</ArticleContent>

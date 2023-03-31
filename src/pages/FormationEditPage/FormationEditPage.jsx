@@ -1,4 +1,5 @@
 import * as React from "react";
+import formationsData from "./formationsData.json";
 import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
@@ -16,7 +17,9 @@ const ContentContainer = styled(Container)`
 	border-radius: 0.25rem;
 	padding: 1rem;
 	background-color: var(--neutral100);
+	margin-top:4rem;
 `;
+
 
 const Tabbar = styled(AppBar)`
 	position: fixed;
@@ -78,7 +81,7 @@ export default function FormationEditPage() {
 				</Tabs>
 			</Tabbar>
 			<TabPanel value={value} index={0} dir={theme.direction}>
-				<FormationEditDetails />
+				<FormationEditDetails data={formationsData}/>
 			</TabPanel>
 			<TabPanel value={value} index={1} dir={theme.direction}>
 				<FormationEditChapters />

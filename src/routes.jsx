@@ -21,7 +21,7 @@ const routes = [
 	},
 	,
 	{
-		path: "/formations/:formationId/edit",
+		path: "/formations/formationId/edit",
 		element: <FormationEditPage />,
 	},
 	{
