@@ -4,7 +4,8 @@ import LinearProgress, {
 } from "@mui/material/LinearProgress";
 import { Fragment, useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate, useParams } from "react-router-dom";
 import ListSubheader from "@mui/material/ListSubheader";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -71,8 +72,9 @@ export const Formation = () => {
 		}
 		setOpen(id);
 	};
+    const {formationId} =  useParams()
 
-	const { data: formation, isLoading, error } = useFetchFormation();
+	const { data: formation, isLoading, error } = useFetchFormation(formationId);
 
 	if (isLoading) {
 		return <div>Loading...</div>;
@@ -86,6 +88,7 @@ export const Formation = () => {
 				sx={{
 					display: "flex",
 					alignItems: "center",
+                    justifyContent: "space-between",
 				}}
 			>
 				<Box
@@ -131,7 +134,7 @@ export const Formation = () => {
 					</ListSubheader>
 				}
 			>
-				{formation.chapters.map((chapter, index) => (
+				{formation?.chapters?.map((chapter, index) => (
 					<Fragment key={index}>
 						<ListItemButton onClick={() => handleClick(chapter.id)}>
 							<ListItemIcon>

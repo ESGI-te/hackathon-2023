@@ -1,16 +1,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
-export default function useAddLesson(id) {
+export default function useAddLesson() {
 	const queryClient = useQueryClient();
 	const history = useNavigate();
 
-	if (!lessonId)
-		throw new Error("A lessonId must be provided to useAddLesson");
-
 	return useMutation({
 		mutationFn: async (formData) => {
-			const response = await fetch("/api/lesson", {
+			const response = await fetch("https://localhost/api/lesson", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -25,10 +22,10 @@ export default function useAddLesson(id) {
 			 * Cancel any outgoing refetches
 			 * (so they don't overwrite our optimistic update)
 			 */
-			await queryClient.cancelQueries({ queryKey: ["lesson", id] });
+			await queryClient.cancelQueries({ queryKey: ["lesson"] });
 
 			// Snapshot the previous value
-			const previousState = queryClient.getQueryData(["lesson", id]);
+			const previousState = queryClient.getQueryData(["lesson",]);
 
 			// Optimistically update to the new value
 			queryClient.setQueryData(["lesson"], () => data);
@@ -51,7 +48,7 @@ export default function useAddLesson(id) {
 		 * Always refetch after error or success:
 		 */
 		onSettled: () => {
-			queryClient.invalidateQueries({ queryKey: ["lesson", id] });
+			queryClient.invalidateQueries({ queryKey: ["lesson"] });
 		},
 	});
 }

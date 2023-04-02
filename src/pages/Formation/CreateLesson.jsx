@@ -14,6 +14,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import useAddLesson from "./useAddLesson.hook";
+import { useNavigate } from "react-router-dom";
 
 const EditorWrapper = styled.div`
   margin: 1em;
@@ -62,21 +64,32 @@ const CreateLesson = () => {
   const { handleSubmit, register, errors } = useForm();
   const { control } = useForm();
   const [text, setText] = useState("");
+  const { mutate: submitLesson, isSuccess, isError } = useAddLesson();
 
-  const onSubmit = (data) => {
-    console.log(data);
+
+    const onSubmit = (data) => {
 
     const file = data.video[0];
 
-    const realData = {
-      Title: data.title,
-      Description: data.description,
-      Content: text,
-        Video: file,
+      const realData = {
+        Title: data.title,
+        Description: data.description,
+        Duration: data.duration,
+        Content: text,
+        Intro: data.intro,
+          Video: file,
+      };
+  
+      submitLesson(realData);
+  
+      if (isSuccess) {
+        //navigate("/formation");
+      }
+  
+    // if (isError) {
+    //   handleError();
+    // }
     };
-
-  };
-
 
 
 
@@ -114,6 +127,28 @@ const CreateLesson = () => {
             />
           )}
         />
+
+<Controller
+          control={control}
+          name="test"
+          render={({
+            field: { onChange, onBlur, value, name, ref },
+            fieldState: { invalid, isTouched, isDirty, error },
+            formState,
+          }) => (
+            <TextField
+              name="name"
+              fullWidth
+              size="small"
+              label="Durée en minutes"
+              type="number"
+              sx={{
+                mt: 2,
+              }}
+              {...register("duration", { required: true })}
+            />
+          )}
+        />
         <Controller
           control={control}
           name="test"
@@ -129,6 +164,24 @@ const CreateLesson = () => {
                 mt: 2,
               }}
               {...register("description", { required: true })}
+            />
+          )}
+        />
+         <Controller
+          control={control}
+          name="intro"
+          render={({
+          }) => (
+            <TextField
+              fullWidth
+              multiline
+              minRows={3}
+              size="small"
+              label="Intro de la lesson"
+              sx={{
+                mt: 2,
+              }}
+              {...register("intro", { required: true })}
             />
           )}
         />

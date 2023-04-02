@@ -1,11 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
-import formationsData from "./formationsData.json";
 import newsData from "./newsData.json";
 import "./TrainingList.css";
 import { Link } from "react-router-dom";
 import { formatDuration } from "@/utils/helpers";
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import useFetchFormations from "@/utils/hooks/useFetchFormations.hook";
 
 const Wrapper = styled.div`
 	background-color: #fff;
@@ -283,7 +283,7 @@ const FormationCard = ({ formation }) => (
 	>
 		<CardMedia
 			sx={{ height: 140 }}
-			image={formation.cover_url}
+			image="https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg"
 			title={formation.title}
 		/>
 		<CardContent>
@@ -324,10 +324,17 @@ const FormationCard = ({ formation }) => (
 
 const List = () => {
 	const [searchTerm, setSearchTerm] = useState("");
+    const { data: formationsData, isLoading, error } = useFetchFormations();
 
 	const handleSearch = (event) => {
 		setSearchTerm(event.target.value);
 	};
+
+	if(isLoading)
+		return <div>Loading...</div>
+	if(error)
+		return <div>Something went wrong...</div>
+		
 
 	const filteredInProgressFormations = filterFormationsByStatusAndTitle(
 		formationsData,
@@ -384,7 +391,7 @@ const List = () => {
 			<NewsWrapper className="news">
 				{newsData.map((news) => (
 					<NewArticle key={news.id} className="article">
-						<ArticleImg src={news.cover_url} />
+						<ArticleImg src="https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg" />
 						<ArticleCaption>
 							<ArticleTitle>{news.title}</ArticleTitle>
 							<ArticleContent>{news.content}</ArticleContent>

@@ -7,7 +7,7 @@ export default function useAddFormation() {
 
 	return useMutation({
 		mutationFn: async (formData) => {
-			const response = await fetch("/api/formations", {
+			const response = await fetch("https://localhost/api/formations", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

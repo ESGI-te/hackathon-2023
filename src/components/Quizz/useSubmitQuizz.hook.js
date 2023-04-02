@@ -8,7 +8,7 @@ export default function useSubmitQuizz(lessonId) {
 
 	return useMutation({
 		mutationFn: async (formData) => {
-			const response = await fetch("/api/quizz", {
+			const response = await fetch("https://localhost/api/quizz", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -41,7 +41,13 @@ export default function useSubmitQuizz(lessonId) {
 		onError: (err, data, context) => {
 			queryClient.setQueryData(["lesson"], context.previousState);
 		},
-		onSuccess: (response) => {},
+		onSuccess: (response) => {
+			
+			if(response.isValid)
+			{
+				// toast sucess 
+			}
+		},
 		/**
 		 * Always refetch after error or success:
 		 */

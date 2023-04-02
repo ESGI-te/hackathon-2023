@@ -15,7 +15,8 @@ import schema from "./FormationCreateForm.schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
-
+import useAddLesson from "../FormationCreateLessonForm/useAddLesson.hook";
+import useAddFormation from "./useAddFormation.hook";
 const Form = styled.form`
 	display: flex;
 	flex-direction: column;
@@ -55,6 +56,7 @@ const FormationCreateForm = () => {
 		resolver: yupResolver(schema),
 	});
 	const [imagePreview, setImagePreview] = useState("");
+	const { mutate: submitFormation, isSuccess, isError } = useAddFormation();
 
 	const handleImageChange = (event) => {
 		const file = event.target.files[0];
@@ -66,7 +68,14 @@ const FormationCreateForm = () => {
 	};
 
 	const onSubmit = (formData) => {
-		console.log(formData);
+		const realData = {
+			Title: formData.title,
+			Description: formData.description,
+			Difficulty: formData.difficulty,
+			Cover_url: formData.cover_url,
+		}
+
+		submitFormation(realData)
 	};
 
 	return (

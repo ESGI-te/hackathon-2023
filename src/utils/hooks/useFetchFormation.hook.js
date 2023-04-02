@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 
-const useFetchFormation = () => {
+const useFetchFormation = (id) => {
 	return useQuery(["formation"], async () => {
-		const data = await fetch("/mock/formation.mock.json");
+        const data = await fetch(`https://localhost/api/formations/${id}`);
 		return data.json();
 	});
 };
