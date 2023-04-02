@@ -55,7 +55,7 @@ const Formations = () => {
         <img src={TeachTraining} alt="Teach training" />
         <Button variant="contained"
 			as={Link}
-			to={`/teaching/formation`} sx={{
+			to={`/teaching/formations`} sx={{
 				display: "flex" ,
 			}}>
           Voir mes formations enseignées

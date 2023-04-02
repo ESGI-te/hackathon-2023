@@ -5,7 +5,7 @@ export default function useEditFormation(formationId) {
 
 	return useMutation({
 		mutationFn: async (formData) => {
-			const response = await fetch("/api/formations", {
+			const response = await fetch(`https://localhost/api/formations/${formationId}`, {
 				method: "PUT",
 				headers: {
 					"Content-Type": "application/json",
