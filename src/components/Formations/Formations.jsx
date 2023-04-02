@@ -254,28 +254,6 @@ const filterFormationsByStatusAndTitle = (formations, status, searchTerm) => {
 };
 
 const FormationCard = ({ formation }) => (
-	// <Card to={`/formations/${formation.id}`} key={formation.id} className="card">
-	// 	<CardImg src={formation.cover_url} />
-	// 	<CardContentWrapper>
-	// 		<TopContent>
-	// 			<CardCaption>{formation.title}</CardCaption>
-	// 			<div className="time">
-	// 				<img className="clock" src="../../../public/icons/clock.svg" />
-	// 				{formation.duration && (
-	// 					<CardCaption>{formatDuration(formation.duration)}</CardCaption>
-	// 				)}
-	// 			</div>
-	// 		</TopContent>
-	// 		<TopContent>
-	// 			<AuthorContent>{formation.author}</AuthorContent>
-	// 			<div className="time">
-	// 				<img className="clock" src="../../../public/icons/book.svg" />
-	// 				<CardCaption>{formation.nblessons}</CardCaption>
-	// 			</div>
-	// 		</TopContent>
-	// 		<CardCaption>{formation.description}</CardCaption>
-	// 	</CardContentWrapper>
-	// </Card>
 	<Card
 		component={Link}
 		to={`/formations/${formation.id}`}
@@ -324,17 +302,14 @@ const FormationCard = ({ formation }) => (
 
 const List = () => {
 	const [searchTerm, setSearchTerm] = useState("");
-    const { data: formationsData, isLoading, error } = useFetchFormations();
+	const { data: formationsData, isLoading, error } = useFetchFormations();
 
 	const handleSearch = (event) => {
 		setSearchTerm(event.target.value);
 	};
 
-	if(isLoading)
-		return <div>Loading...</div>
-	if(error)
-		return <div>Something went wrong...</div>
-		
+	if (isLoading) return <div>Loading...</div>;
+	if (error) return <div>Something went wrong...</div>;
 
 	const filteredInProgressFormations = filterFormationsByStatusAndTitle(
 		formationsData,
