@@ -109,8 +109,19 @@ const NavigatorThread = ({ data }) => (
 const Navigator = ({ isLoading, data }) => {
 	const { isDesktop } = useResponsive();
 	const { formationId } = useParams();
-	const prevLessonLink = `/formations/${formationId}/lessons/${data?.prev.id}`;
-	const nextLessonLink = `/formations/${formationId}/lessons/${data?.next.id}`;
+
+	const prevLessonLink = {
+		pathname: `/formations/${formationId}/lessons/${data?.prev.id}`,
+		state: {
+			type: data?.prev.type,
+		},
+	};
+	const nextLessonLink = {
+		pathname: `/formations/${formationId}/lessons/${data?.next.id}`,
+		state: {
+			type: data?.next.type,
+		},
+	};
 
 	return (
 		<NavigatorContainer>
@@ -154,7 +165,8 @@ const Navigator = ({ isLoading, data }) => {
 
 const LessonPage = () => {
 	const { lessonId } = useParams();
-	const { data, isLoading } = useFetchLesson(lessonId);
+	const { type } = useLocation();
+	const { data, isLoading } = useFetchLesson(lessonId, type);
 	const isQuizz = data && data.current.questions;
 
 	return (
