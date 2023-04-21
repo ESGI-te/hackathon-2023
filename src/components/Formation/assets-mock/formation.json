@@ -1,0 +1,35 @@
+{
+    "title": "Comment être un bon manager ?",
+    "description": "Description",
+    "difficulty": "Hard",
+    "progress": 50,
+    "cover": "url",
+    "chapters": [
+      {
+        "id": 1,
+        "title": "Les bases du management",
+        "description": "Description",
+        "lessons": [
+          {
+            "title": "Comment gérer ses émotions",
+            "isCompleted": false
+          },
+          {
+            "title": "Comprendre les autres",
+            "isCompleted": true
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Chapter 2",
+        "description": "Description",
+        "lessons": [
+          {
+            "title": "How to become a good employee",
+            "isCompleted": "true"
+          },
+        ],
+      },
+    ],
+  }

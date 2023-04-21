@@ -1,27 +1,65 @@
 @import url('reset.css');
 
 :root {
-  /* Variables goes here */
+  /* Neutral and primary  */
+  --neutral100: #FFFFFF;
+  --neutral200: #F5F6F7;
+  --neutral300: #EBEFF5;
+  --neutral400: #E1E5EA;
+  --neutral500: #CDD3DB;
+  --neutral600: #8696A9;
+  --neutral700: #5D738D;
+  --neutral800: #355070;
+  --neutral900: #1F2F42;
+  /* Sky Blue and secondary */
+  --blue100: #ECF2F9;
+  --blue200: #D5E4F6;
+  --blue300: #ACC8EE;
+  --blue400: #91B5E9;
+  --blue500: #75A3E3;
+  --blue600: #5E82B6;
+  --blue700: #466288;
+  /* OceanWave */
+  --ocean100: #EDF6F7;
+  --ocean200: #CEECF2;
+  --ocean300: #A1D7E2;
+  --ocean400: #6EB2BF;
+  --ocean500: #458E9D;
+  --ocean600: #3B7A87;
+  --ocean700: #336A75;
+  /* Yello sub */
+  --yellow100: #FFF3DB;
+  --yellow200: #FFEFC7;
+  --yellow300: #FFE7AA;
+  --yellow400: #FFD466;
+  --yellow500: #FFBE1A;
+  --yellow600: #EBA800;
+  --yellow700: #CC9200;
+  /* Red Light */
+  --red100: #F9ECEC;
+  --red200: #F9C8CA;
+  --red300: #EEA0A2;
+  --red400: #EE878A;
+  --red500: #E67377;
+  --red600: #D45458;
+  --red700: #AB494C;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 body {
-  min-height: 100vh;
+    min-height: 100vh;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
-
-
-
