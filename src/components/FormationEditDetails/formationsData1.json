@@ -1,0 +1,11 @@
+{
+	"id": 9,
+	"title": "Ma super formation 5",
+	"description": "Nisi id et excepteur consectetur ut ex anim et voluptate exercitation laborum occaecat. Exercitation consequat et veniam id duis aliqua.",
+	"author": "Teo Lugat",
+	"cover_url": "https://t3.ftcdn.net/jpg/05/29/37/22/360_F_529372232_2Z75XLUgwHQQmtsgeWwGdpdCx4inCPbP.jpg",
+	"duration": 10000000,
+	"status": "completed",
+	"nbLessons": 6,
+	"difficulty": "hard"
+}
